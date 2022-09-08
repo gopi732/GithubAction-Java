@@ -24,6 +24,13 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - name: Create a temporary artifact downloads folder
+      run: mkdir /home/gopi/GithubAction-Java/target
+    - name: Use the Upload Artifact GitHub Action
+      uses: actions/upload-artifact@v2
+      with: 
+         name: assets-for-download
+         path: /target/springboot-images-new.jar
 
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
