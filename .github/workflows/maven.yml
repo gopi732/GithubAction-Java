@@ -27,7 +27,7 @@ jobs:
         mvn clean install
         pwd
     - name: Create a temporary artifact downloads folder
-      run: mkdir GithubAction-Java
+      run: mkdir /home/gopi/github-actions/actions-runner/_work/GithubAction-Java/GithubAction-Java
     - name: Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
