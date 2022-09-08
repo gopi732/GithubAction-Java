@@ -27,12 +27,20 @@ jobs:
         mvn clean install
         pwd
     - name: Create a temporary artifact downloads folder
-      run: mkdir /home/gopi/github-actions/actions-runner/_work/GithubAction-Java/GithubAction-Java
+      run: mkdir downloads
+    - name: Add artifacts to publish to the temp folder
+      run: |
+        cd downloads
+        echo 'alpha'    > alpha.html
+        echo 'bravo'    > bravo.html
+        echo 'charlie'  > charlie.html
+        cd ..
+    
     - name: Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
          name: assets-for-download
-         path: GithubAction-Java/target/springboot-images-new.jar
+         path: target/springboot-images-new.jar
 
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
